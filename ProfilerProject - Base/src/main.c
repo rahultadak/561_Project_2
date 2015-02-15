@@ -11,11 +11,14 @@
 #include "timers.h"
 #include "i2c.h"
 #include "mma8451.h"
+#include "triggers.h"
+#include "v2xe.h"
 
 #include "delay.h"
 #include "profile.h"
 
 int debug_iter = 0;
+uint32_t trigger = 0;
 /*----------------------------------------------------------------------------
   MAIN function
  *----------------------------------------------------------------------------*/
@@ -49,6 +52,8 @@ int main (void) {
 		while (1)
 			;
 	}
+	//Init Triggers
+	Init_Triggers();
 	
 	Delay(1000);
 
@@ -61,7 +66,6 @@ int main (void) {
 	
 	for (i=0; i<NUM_TESTS; i++) {
 		read_full_xyz();
-
 		convert_xyz_to_roll_pitch();
 
 #ifdef USE_LCD
@@ -79,8 +83,37 @@ int main (void) {
 	
 	// Done, turn on blue LED
 	Control_RGB_LEDs(0, 0, 1);
+	Delay(500);
+	Control_RGB_LEDs(0, 0, 0);
+
 	while (1)
-		;
+	{
+		//Reading input at Port B and shifting the values to bits[1:0]
+		trigger = (PTB->PDIR & PTB_TRIGGER_MASK);
+		if(trigger)
+		//if(trigger == PTB_PIN_9)		//Remove comments after debug
+		{
+			//First Trigger
+			Control_RGB_LEDs(1, 0, 0);
+			//Read Accelerometer
+			read_full_xyz();
+			//Calculate Roll and Pitch
+			convert_xyz_to_roll_pitch();
+			
+			Compensated_Heading_DEF(roll,pitch);
+			
+			Control_RGB_LEDs(0, 0, 0);
+		}
+		else if(!trigger)
+		//else if (trigger == PTB_PIN_8)	//Remove comments after debug
+		{
+			//Second Trigger
+		}
+		else
+		{
+			//No Trigger Code
+		}
+	}
 }
 
 // *******************************ARM University Program Copyright © ARM Ltd 2013*************************************   

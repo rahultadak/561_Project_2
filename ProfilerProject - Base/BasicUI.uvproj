@@ -158,7 +158,7 @@
             <CpuDllArguments></CpuDllArguments>
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
+            <InitializationFile>.\DBG_MTB.ini</InitializationFile>
             <Driver>BIN\CMSIS_AGDI.dll</Driver>
           </TargetDlls>
         </DebugOption>
@@ -242,7 +242,7 @@
             <Ra1Chk>0</Ra1Chk>
             <Ra2Chk>0</Ra2Chk>
             <Ra3Chk>0</Ra3Chk>
-            <Im1Chk>1</Im1Chk>
+            <Im1Chk>0</Im1Chk>
             <Im2Chk>0</Im2Chk>
             <OnChipMemories>
               <Ocm1>
@@ -345,7 +345,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>0</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>0</OneElfS>
@@ -360,7 +360,7 @@
             <uC99>0</uC99>
             <useXO>0</useXO>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>--fpmode=fast</MiscControls>
               <Define></Define>
               <Undefine></Undefine>
               <IncludePath>.\inc</IncludePath>
@@ -513,6 +513,21 @@
               <FileName>region.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\region.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>triggers.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\triggers.c</FilePath>
+            </File>
+            <File>
+              <FileName>v2xe.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\v2xe.c</FilePath>
             </File>
           </Files>
         </Group>

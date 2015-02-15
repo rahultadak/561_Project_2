@@ -14,5 +14,7 @@
 .\obj\main.o: .\inc\timers.h
 .\obj\main.o: .\inc\i2c.h
 .\obj\main.o: .\inc\mma8451.h
+.\obj\main.o: .\inc\triggers.h
+.\obj\main.o: .\inc\v2xe.h
 .\obj\main.o: .\inc\delay.h
 .\obj\main.o: .\inc\profile.h
