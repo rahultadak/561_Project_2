@@ -6,6 +6,7 @@
 
 int16_t acc_X=0, acc_Y=0, acc_Z=0;
 float roll=0.0, pitch=0.0, roll_rads = 0.0, pitch_rads = 0.0;
+float d180_over_pi = 57.295779f;
 
 //mma data ready
 extern uint32_t DATA_READY;
@@ -39,17 +40,27 @@ int init_mma()
 void read_full_xyz()
 {
 	int i;
-	uint8_t data[3];
+	uint16_t data[3];
 	int16_t temp[3];
+	
+	begin:
 	
 	i2c_start();
 	i2c_read_setup(MMA_ADDR , REG_XHI);
 	
 	for( i=0;i<3;i++)	{
 		if(i==2)
+		{
 			data[i] = i2c_repeated_read(1);
+			if(data[i] == error)
+					goto begin;
+		}
 		else
+		{
 			data[i] = i2c_repeated_read(0);
+			if(data[i] == error)
+					goto begin;
+		}
 	}
 	
 	temp[0] = (int16_t)((data[0]<<8));// | (data[1]<<2));
@@ -60,7 +71,6 @@ void read_full_xyz()
 	acc_Y = temp[1];
 	acc_Z = temp[2];
 }
-
 
 void read_xyz(void)
 {
@@ -80,9 +90,11 @@ void convert_xyz_to_roll_pitch(void) {
 				az = acc_Z/COUNTS_PER_G;
 	
 	pitch_rads = asinf(ax);
-	pitch = pitch_rads*D180_OVER_PI;
+	arm_mult_f32(&pitch_rads,&d180_over_pi,&pitch,1);
+	//pitch = pitch_rads*D180_OVER_PI;
 	roll_rads = atan2f(ay, az);
-	roll = roll_rads*D180_OVER_PI;	
+	arm_mult_f32(&roll_rads,&d180_over_pi,&roll,1);
+	//roll = roll_rads*D180_OVER_PI;	
 }
 
 void convert_xyz_to_roll_pitch_DEF(void)
@@ -96,9 +108,3 @@ void convert_xyz_to_roll_pitch_DEF(void)
 	roll_rads = atan2f(ay, az);
 	roll = roll_rads*D180_OVER_PI;	
 }
-//mma data ready irq
-// void PORTA_IRQHandler()
-// {
-// 	NVIC_ClearPendingIRQ(PORTA_IRQn);
-// 	DATA_READY = 1;	
-// }

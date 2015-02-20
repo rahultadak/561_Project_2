@@ -27,17 +27,21 @@ Project File Date:  02/20/2015
 <h2>Output:</h2>
 Build target 'KL25Z Flash'
 *** Scatter Error: no default 'Read/Write' range selected
+compiling i2c.c...
+src\i2c.c(204): warning:  #177-D: variable "i" was declared but never referenced
+        int i;
+src\i2c.c: 1 warning, 0 errors
+compiling mma8451.c...
+src\mma8451.c(93): warning:  #223-D: function "arm_mult_f32" declared implicitly
+        arm_mult_f32(&pitch_rads,&d180_over_pi,&pitch,1);
+src\mma8451.c: 1 warning, 0 errors
 compiling region.c...
-compiling v2xe.c...
-src\v2xe.c(17): warning:  #223-D: function "arm_mult_f32" declared implicitly
-        arm_mult_f32(&mx,&cos_pitch,&tmp1,1);
-src\v2xe.c: 1 warning, 0 errors
 linking...
-Program Size: Code=4472 RO-data=4292 RW-data=68 ZI-data=1276  
+Program Size: Code=4656 RO-data=4356 RW-data=76 ZI-data=1284  
 After Build - User command #1: "C:\Users\Rahul\Documents\ECE 561\Projects\561_Project_2\ProfilerProject - Base\Scripts\update_regions_MDK.bat"
 C:\Users\Rahul\Documents\ECE 561\Projects\561_Project_2\ProfilerProject - Base>set PATH=C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Lenovo\Bluetooth Software\;C:\Program Files\Lenovo\Bluetooth Software\syswow64;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files\Calibre2\;C:\Modeltech_pe_edu_10.3c\win32pe_edu;C:\Modeltech_pe_edu_10.4\win32pe_edu;C:\cygwin64\bin 
 C:\Users\Rahul\Documents\ECE 561\Projects\561_Project_2\ProfilerProject - Base>Scripts\getregions.exe obj/*.axf -c -osrc/region.c 
-".\obj\BasicUI.axf" - 0 Error(s), 1 Warning(s).
+".\obj\BasicUI.axf" - 0 Error(s), 2 Warning(s).
 </pre>
 </body>
 </html>

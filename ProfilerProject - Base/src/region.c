@@ -23,47 +23,49 @@ const REGION_T RegionTable[] = {
 	{0x00000551, 0x0000056a, "Set_PWM_Values"}, // 19
 	{0x000005c1, 0x000005f4, "i2c_init"}, // 20
 	{0x000005f5, 0x00000608, "i2c_start"}, // 21
-	{0x00000609, 0x0000064e, "i2c_read_setup"}, // 22
-	{0x0000064f, 0x00000682, "i2c_repeated_read"}, // 23
-	{0x00000683, 0x000006f8, "i2c_read_byte"}, // 24
-	{0x000006f9, 0x00000742, "i2c_write_byte"}, // 25
-	{0x00000751, 0x00000786, "init_mma"}, // 26
-	{0x00000787, 0x000007dc, "read_full_xyz"}, // 27
-	{0x000007dd, 0x00000812, "read_xyz"}, // 28
-	{0x00000813, 0x00000870, "convert_xyz_to_roll_pitc"}, // 29
-	{0x00000871, 0x0000089e, "convert_xyz_to_roll_pitc"}, // 30
-	{0x000008ad, 0x000008dc, "Init_Profiling"}, // 31
-	{0x000008dd, 0x000008e4, "Disable_Profiling"}, // 32
-	{0x000008e5, 0x000008ec, "Enable_Profiling"}, // 33
-	{0x000008fd, 0x0000092a, "Init_Triggers"}, // 34
-	{0x00000935, 0x000009f4, "Compensated_Heading_DEF"}, // 35
-	{0x00000a05, 0x00000a3c, "sin_lookup"}, // 36
-	{0x00000a3d, 0x00000a6e, "cos_lookup"}, // 37
-	{0x00000a7d, 0x00000aea, "arm_mult_f32"}, // 38
-	{0x00000af1, 0x00000b1c, "__aeabi_uidivmod"}, // 39
-	{0x00000b1d, 0x00000bbe, "__aeabi_fadd"}, // 40
-	{0x00000bbf, 0x00000bc6, "__aeabi_fsub"}, // 41
-	{0x00000bc7, 0x00000bce, "__aeabi_frsub"}, // 42
-	{0x00000bcf, 0x00000c48, "__aeabi_fmul"}, // 43
-	{0x00000c49, 0x00000c5e, "__aeabi_i2f"}, // 44
-	{0x00000c5f, 0x00000c90, "__aeabi_f2iz"}, // 45
-	{0x00000c91, 0x00000ca0, "_float_round"}, // 46
-	{0x00000ca1, 0x00000d12, "_float_epilogue"}, // 47
-	{0x00000d13, 0x00000d8e, "__aeabi_fdiv"}, // 48
-	{0x00000d91, 0x00000dac, "__scatterload"}, // 49
-	{0x00000db5, 0x00000e0c, "_fsqrt"}, // 50
-	{0x00000e0d, 0x00000e26, "__ARM_common_switch8"}, // 51
-	{0x00000e27, 0x00000e48, "__ARM_fpclassifyf"}, // 52
-	{0x00000e49, 0x00000e52, "__mathlib_flt_infnan"}, // 53
-	{0x00000e53, 0x00000e5e, "__mathlib_flt_invalid"}, // 54
-	{0x00000e5f, 0x00000e6c, "__mathlib_flt_underflow"}, // 55
-	{0x00000e6d, 0x00000e7a, "__scatterload_copy"}, // 56
-	{0x00000e7b, 0x00000e7c, "__scatterload_null"}, // 57
-	{0x00000e7d, 0x00000e8a, "__scatterload_zeroinit"}, // 58
-	{0x00000e8d, 0x00000e92, "__set_errno"}, // 59
-	{0x00000e99, 0x00000f8a, "asinf"}, // 60
-	{0x00000fb1, 0x000011be, "atan2f"}, // 61
-	{0x0000120d, 0x00001238, "sqrtf"}, // 62
+	{0x00000609, 0x0000066c, "i2c_reset"}, // 22
+	{0x0000066d, 0x0000069e, "i2c_wait"}, // 23
+	{0x0000069f, 0x000006e6, "i2c_read_setup"}, // 24
+	{0x000006e7, 0x00000720, "i2c_repeated_read"}, // 25
+	{0x00000721, 0x00000792, "i2c_read_byte"}, // 26
+	{0x00000793, 0x000007de, "i2c_write_byte"}, // 27
+	{0x000007f1, 0x00000826, "init_mma"}, // 28
+	{0x00000827, 0x00000884, "read_full_xyz"}, // 29
+	{0x00000885, 0x000008ba, "read_xyz"}, // 30
+	{0x000008bb, 0x00000928, "convert_xyz_to_roll_pitc"}, // 31
+	{0x00000929, 0x00000956, "convert_xyz_to_roll_pitc"}, // 32
+	{0x00000965, 0x00000994, "Init_Profiling"}, // 33
+	{0x00000995, 0x0000099c, "Disable_Profiling"}, // 34
+	{0x0000099d, 0x000009a4, "Enable_Profiling"}, // 35
+	{0x000009b5, 0x000009e2, "Init_Triggers"}, // 36
+	{0x000009ed, 0x00000aac, "Compensated_Heading_DEF"}, // 37
+	{0x00000abd, 0x00000af4, "sin_lookup"}, // 38
+	{0x00000af5, 0x00000b26, "cos_lookup"}, // 39
+	{0x00000b35, 0x00000ba2, "arm_mult_f32"}, // 40
+	{0x00000ba9, 0x00000bd4, "__aeabi_uidivmod"}, // 41
+	{0x00000bd5, 0x00000c76, "__aeabi_fadd"}, // 42
+	{0x00000c77, 0x00000c7e, "__aeabi_fsub"}, // 43
+	{0x00000c7f, 0x00000c86, "__aeabi_frsub"}, // 44
+	{0x00000c87, 0x00000d00, "__aeabi_fmul"}, // 45
+	{0x00000d01, 0x00000d16, "__aeabi_i2f"}, // 46
+	{0x00000d17, 0x00000d48, "__aeabi_f2iz"}, // 47
+	{0x00000d49, 0x00000d58, "_float_round"}, // 48
+	{0x00000d59, 0x00000dca, "_float_epilogue"}, // 49
+	{0x00000dcb, 0x00000e46, "__aeabi_fdiv"}, // 50
+	{0x00000e49, 0x00000e64, "__scatterload"}, // 51
+	{0x00000e6d, 0x00000ec4, "_fsqrt"}, // 52
+	{0x00000ec5, 0x00000ede, "__ARM_common_switch8"}, // 53
+	{0x00000edf, 0x00000f00, "__ARM_fpclassifyf"}, // 54
+	{0x00000f01, 0x00000f0a, "__mathlib_flt_infnan"}, // 55
+	{0x00000f0b, 0x00000f16, "__mathlib_flt_invalid"}, // 56
+	{0x00000f17, 0x00000f24, "__mathlib_flt_underflow"}, // 57
+	{0x00000f25, 0x00000f32, "__scatterload_copy"}, // 58
+	{0x00000f33, 0x00000f34, "__scatterload_null"}, // 59
+	{0x00000f35, 0x00000f42, "__scatterload_zeroinit"}, // 60
+	{0x00000f45, 0x00000f4a, "__set_errno"}, // 61
+	{0x00000f51, 0x00001042, "asinf"}, // 62
+	{0x00001069, 0x00001276, "atan2f"}, // 63
+	{0x000012c5, 0x000012f0, "sqrtf"}, // 64
 }; 
-const unsigned NumProfileRegions=63;
-volatile unsigned RegionCount[63];
+const unsigned NumProfileRegions=65;
+volatile unsigned RegionCount[65];

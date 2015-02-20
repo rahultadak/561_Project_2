@@ -8,7 +8,6 @@
 ".\obj\i2c.o"
 ".\obj\mma8451.o"
 ".\obj\delay.o"
-".\obj\sine_table.o"
 ".\obj\profile.o"
 ".\obj\region.o"
 ".\obj\spi.o"
