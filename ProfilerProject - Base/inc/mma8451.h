@@ -18,14 +18,20 @@
 
 #define COUNTS_PER_G (16384.0)
 #define M_PI (3.141593f)
-#define D180_OVER_PI (59.295113f)
+#define D180_OVER_PI (57.295779f)
 
+#define AX_DEF		(11585.2375)
+#define AY_DEF		(11585.2375)
+#define AZ_DEF		(0.0)
+	
 int init_mma(void);
 void read_full_xyz(void);
 void read_xyz(void);
 void convert_xyz_to_roll_pitch(void);
 
-extern float roll, pitch;
+void convert_xyz_to_roll_pitch_DEF(void);
+
+extern float roll, pitch, roll_rads, pitch_rads;
 extern int16_t acc_X, acc_Y, acc_Z;
 
 #endif

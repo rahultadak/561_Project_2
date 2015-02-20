@@ -361,7 +361,7 @@
             <useXO>0</useXO>
             <VariousControls>
               <MiscControls>--fpmode=fast</MiscControls>
-              <Define></Define>
+              <Define>ARM_MATH_CM0PLUS</Define>
               <Undefine></Undefine>
               <IncludePath>.\inc</IncludePath>
             </VariousControls>
@@ -396,7 +396,7 @@
             <ScatterFile></ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
-            <Misc></Misc>
+            <Misc>C:\Keil_v5\ARM\CMSIS\Lib\ARM\arm_cortexM0l_math.lib</Misc>
             <LinkerInputFile></LinkerInputFile>
             <DisabledWarnings></DisabledWarnings>
           </LDads>
@@ -528,6 +528,11 @@
               <FileName>v2xe.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\v2xe.c</FilePath>
+            </File>
+            <File>
+              <FileName>lookup_tables.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\lookup_tables.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -5,7 +5,7 @@
 #include <math.h>
 
 int16_t acc_X=0, acc_Y=0, acc_Z=0;
-float roll=0.0, pitch=0.0;
+float roll=0.0, pitch=0.0, roll_rads = 0.0, pitch_rads = 0.0;
 
 //mma data ready
 extern uint32_t DATA_READY;
@@ -24,7 +24,7 @@ int init_mma()
 		  i2c_write_byte(MMA_ADDR, REG_CTRL4, 0x01);
 		  Delay(100);
 		  
-		  i2c_write_byte(MMA_ADDR, REG_CTRL1, 0x03);
+		  i2c_write_byte(MMA_ADDR, REG_CTRL1, 0x33);
 				
 		  //enable the irq in the NVIC
 		  //NVIC_EnableIRQ(PORTA_IRQn);
@@ -79,12 +79,23 @@ void convert_xyz_to_roll_pitch(void) {
 				ay = acc_Y/COUNTS_PER_G,
 				az = acc_Z/COUNTS_PER_G;
 	
-	pitch = asinf(ax)*D180_OVER_PI;
-	roll = atan2f(ay, az)*D180_OVER_PI;
-	
+	pitch_rads = asinf(ax);
+	pitch = pitch_rads*D180_OVER_PI;
+	roll_rads = atan2f(ay, az);
+	roll = roll_rads*D180_OVER_PI;	
 }
 
-
+void convert_xyz_to_roll_pitch_DEF(void)
+{
+	float ax = AX_DEF/COUNTS_PER_G,
+				ay = AY_DEF/COUNTS_PER_G,
+				az = AZ_DEF/COUNTS_PER_G;
+	
+	pitch_rads = asinf(ax);
+	pitch = pitch_rads*D180_OVER_PI;
+	roll_rads = atan2f(ay, az);
+	roll = roll_rads*D180_OVER_PI;	
+}
 //mma data ready irq
 // void PORTA_IRQHandler()
 // {

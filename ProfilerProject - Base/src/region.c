@@ -9,12 +9,12 @@ const REGION_T RegionTable[] = {
 	{0x00000269, 0x0000026a, "SVC_Handler"}, // 5
 	{0x0000026b, 0x0000026c, "PendSV_Handler"}, // 6
 	{0x0000026d, 0x0000026e, "SysTick_Handler"}, // 7
-	{0x00000279, 0x00000332, "main"}, // 8
-	{0x00000345, 0x00000398, "Init_RGB_LEDs"}, // 9
-	{0x00000399, 0x000003ca, "Control_RGB_LEDs"}, // 10
-	{0x000003dd, 0x000003ee, "Delay"}, // 11
-	{0x000003f5, 0x000003fe, "__mathlib_flt_infnan"}, // 12
-	{0x000003ff, 0x00000400, "__scatterload_null"}, // 13
+	{0x00000279, 0x00000314, "main"}, // 8
+	{0x00000331, 0x00000384, "Init_RGB_LEDs"}, // 9
+	{0x00000385, 0x000003b6, "Control_RGB_LEDs"}, // 10
+	{0x000003c9, 0x000003da, "Delay"}, // 11
+	{0x000003e1, 0x000003f8, "__ARM_scalbnf"}, // 12
+	{0x000003f9, 0x00000400, "__mathlib_flt_infnan2"}, // 13
 	{0x00000411, 0x0000049a, "PIT_IRQHandler"}, // 14
 	{0x0000049b, 0x000004e6, "Init_PIT"}, // 15
 	{0x000004e7, 0x000004f2, "Start_PIT"}, // 16
@@ -30,42 +30,40 @@ const REGION_T RegionTable[] = {
 	{0x00000751, 0x00000786, "init_mma"}, // 26
 	{0x00000787, 0x000007dc, "read_full_xyz"}, // 27
 	{0x000007dd, 0x00000812, "read_xyz"}, // 28
-	{0x00000813, 0x0000086c, "convert_xyz_to_roll_pitc"}, // 29
-	{0x00000875, 0x000008a4, "Init_Profiling"}, // 30
-	{0x000008a5, 0x000008ac, "Disable_Profiling"}, // 31
-	{0x000008ad, 0x000008b4, "Enable_Profiling"}, // 32
-	{0x000008c5, 0x000008f2, "Init_Triggers"}, // 33
-	{0x000008fd, 0x0000097c, "Compensated_Heading_DEF"}, // 34
-	{0x0000098d, 0x000009b8, "__aeabi_uidivmod"}, // 35
-	{0x000009b9, 0x00000a5a, "__aeabi_fadd"}, // 36
-	{0x00000a5b, 0x00000a62, "__aeabi_fsub"}, // 37
-	{0x00000a63, 0x00000a6a, "__aeabi_frsub"}, // 38
-	{0x00000a6b, 0x00000ae4, "__aeabi_fmul"}, // 39
-	{0x00000ae5, 0x00000afc, "__ARM_scalbnf"}, // 40
-	{0x00000afd, 0x00000b12, "__aeabi_i2f"}, // 41
-	{0x00000b13, 0x00000b22, "_float_round"}, // 42
-	{0x00000b23, 0x00000b94, "_float_epilogue"}, // 43
-	{0x00000b95, 0x00000c10, "__aeabi_fdiv"}, // 44
-	{0x00000c11, 0x00000c4e, "_frnd"}, // 45
-	{0x00000c4f, 0x00000c80, "__aeabi_f2iz"}, // 46
-	{0x00000c81, 0x00000c9c, "__scatterload"}, // 47
-	{0x00000ca5, 0x00000cfc, "_fsqrt"}, // 48
-	{0x00000cfd, 0x00000d0a, "__aeabi_ui2f"}, // 49
-	{0x00000d0b, 0x00000d3c, "__ARM_common_ll_muluu"}, // 50
-	{0x00000d3d, 0x00000d56, "__ARM_common_switch8"}, // 51
-	{0x00000d57, 0x00000d78, "__ARM_fpclassifyf"}, // 52
-	{0x00000d79, 0x00000d80, "__mathlib_flt_infnan2"}, // 53
-	{0x00000d81, 0x00000d8c, "__mathlib_flt_invalid"}, // 54
-	{0x00000d8d, 0x00000d9a, "__mathlib_flt_underflow"}, // 55
-	{0x00000d9d, 0x00000f0a, "__mathlib_rredf2"}, // 56
-	{0x00000f1d, 0x00000f2a, "__scatterload_copy"}, // 57
-	{0x00000f2b, 0x00000f38, "__scatterload_zeroinit"}, // 58
-	{0x00000f39, 0x00000f3e, "__set_errno"}, // 59
-	{0x00000f45, 0x00001036, "asinf"}, // 60
-	{0x0000105d, 0x0000126a, "atan2f"}, // 61
-	{0x000012b9, 0x000013f6, "cosf"}, // 62
-	{0x00001431, 0x0000157a, "sinf"}, // 63
-	{0x000015b5, 0x000015e0, "sqrtf"}, // 64
+	{0x00000813, 0x00000870, "convert_xyz_to_roll_pitc"}, // 29
+	{0x00000871, 0x0000089e, "convert_xyz_to_roll_pitc"}, // 30
+	{0x000008ad, 0x000008dc, "Init_Profiling"}, // 31
+	{0x000008dd, 0x000008e4, "Disable_Profiling"}, // 32
+	{0x000008e5, 0x000008ec, "Enable_Profiling"}, // 33
+	{0x000008fd, 0x0000092a, "Init_Triggers"}, // 34
+	{0x00000935, 0x000009f4, "Compensated_Heading_DEF"}, // 35
+	{0x00000a05, 0x00000a3c, "sin_lookup"}, // 36
+	{0x00000a3d, 0x00000a6e, "cos_lookup"}, // 37
+	{0x00000a7d, 0x00000aea, "arm_mult_f32"}, // 38
+	{0x00000af1, 0x00000b1c, "__aeabi_uidivmod"}, // 39
+	{0x00000b1d, 0x00000bbe, "__aeabi_fadd"}, // 40
+	{0x00000bbf, 0x00000bc6, "__aeabi_fsub"}, // 41
+	{0x00000bc7, 0x00000bce, "__aeabi_frsub"}, // 42
+	{0x00000bcf, 0x00000c48, "__aeabi_fmul"}, // 43
+	{0x00000c49, 0x00000c5e, "__aeabi_i2f"}, // 44
+	{0x00000c5f, 0x00000c90, "__aeabi_f2iz"}, // 45
+	{0x00000c91, 0x00000ca0, "_float_round"}, // 46
+	{0x00000ca1, 0x00000d12, "_float_epilogue"}, // 47
+	{0x00000d13, 0x00000d8e, "__aeabi_fdiv"}, // 48
+	{0x00000d91, 0x00000dac, "__scatterload"}, // 49
+	{0x00000db5, 0x00000e0c, "_fsqrt"}, // 50
+	{0x00000e0d, 0x00000e26, "__ARM_common_switch8"}, // 51
+	{0x00000e27, 0x00000e48, "__ARM_fpclassifyf"}, // 52
+	{0x00000e49, 0x00000e52, "__mathlib_flt_infnan"}, // 53
+	{0x00000e53, 0x00000e5e, "__mathlib_flt_invalid"}, // 54
+	{0x00000e5f, 0x00000e6c, "__mathlib_flt_underflow"}, // 55
+	{0x00000e6d, 0x00000e7a, "__scatterload_copy"}, // 56
+	{0x00000e7b, 0x00000e7c, "__scatterload_null"}, // 57
+	{0x00000e7d, 0x00000e8a, "__scatterload_zeroinit"}, // 58
+	{0x00000e8d, 0x00000e92, "__set_errno"}, // 59
+	{0x00000e99, 0x00000f8a, "asinf"}, // 60
+	{0x00000fb1, 0x000011be, "atan2f"}, // 61
+	{0x0000120d, 0x00001238, "sqrtf"}, // 62
 }; 
-const unsigned NumProfileRegions=65;
-volatile unsigned RegionCount[65];
+const unsigned NumProfileRegions=63;
+volatile unsigned RegionCount[63];
