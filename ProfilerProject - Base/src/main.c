@@ -59,8 +59,8 @@ int main (void) {
 	
 	Delay(1000);
 
-	//Compile this code only if PROFILING_MODE Enabled
-#ifdef PROFILING_MODE
+//Compile this code only if PROFILING_MODE Enabled
+//#ifdef PROFILING_MODE
 
 	Init_Profiling();
 	__enable_irq();
@@ -94,14 +94,15 @@ int main (void) {
 	Control_RGB_LEDs(0, 0, 1);
 	Delay(500);
 	Control_RGB_LEDs(0, 0, 0);
-#endif
+//#endif
 	
-#ifndef PROFILING_MODE
+//#ifndef PROFILING_MODE
 	while (1)
 	{
 		//Reading input at Port B and shifting the values to bits[1:0]
 		trigger = (PTB->PDIR & PTB_TRIGGER_MASK);
-		//if(!trigger)
+		
+		//Trigger 1 : if Pin8 is grounded
 		if(trigger == PTB_PIN_9)		//Remove comments after debug
 		{
 			//First Trigger
@@ -115,7 +116,8 @@ int main (void) {
 			
 			Control_RGB_LEDs(0, 0, 0);
 		}
-		//else if(trigger)
+		
+		//Trigger 2 : if Pin9 is grounded
 		else if (trigger == PTB_PIN_8)	//Remove comments after debug
 		{
 			//Second Trigger
@@ -147,7 +149,7 @@ int main (void) {
 
 		}
 	}
-#endif
+//#endif
 	
 }
 

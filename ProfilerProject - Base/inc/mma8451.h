@@ -20,9 +20,9 @@
 #define M_PI (3.141593f)
 #define D180_OVER_PI (57.295779f)
 
-#define AX_DEF		(11585.2375)
-#define AY_DEF		(11585.2375)
-#define AZ_DEF		(0.0)
+#define AX_DEF		(3840)
+#define AY_DEF		(-2080)
+#define AZ_DEF		(15616)
 	
 int init_mma(void);
 void read_full_xyz(void);

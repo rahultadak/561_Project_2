@@ -517,7 +517,7 @@ const float cosine[256] = {1.000000,
 
 float sin_lookup(float angle)
 {
-	float constant = ONE_OVER_PI;
+	float constant = F256_OVER_PI;
 	float index_mid = 0.0;
 	int index = 0;
 	arm_mult_f32(&constant,&angle,&index_mid,1);
@@ -533,7 +533,7 @@ float sin_lookup(float angle)
 
 float cos_lookup(float angle)
 {
-	float constant = ONE_OVER_PI;
+	float constant = F256_OVER_PI;
 	float index_mid = 0.0;
 	int index = 0;	
 	arm_mult_f32(&constant,&angle,&index_mid,1);

@@ -4,14 +4,15 @@
 
 float heading = 0;
 float x_h = 0,y_h = 0;
+float sin_pitch,sin_roll,cos_pitch,cos_roll;
 
 void Compensated_Heading_DEF (float mx, float my, float mz, float roll_rads, float pitch_rads)
 {
 	float tmp1,tmp2,tmp3,tmp4;
-	float sin_pitch = sin_lookup(pitch_rads);
-	float sin_roll = sin_lookup(roll_rads);
-	float cos_pitch = cos_lookup(pitch_rads);
-	float cos_roll = cos_lookup(roll_rads);
+	sin_pitch = sin_lookup(pitch_rads);
+	sin_roll = sin_lookup(roll_rads);
+	cos_pitch = cos_lookup(pitch_rads);
+	cos_roll = cos_lookup(roll_rads);
 	
 	//x_h = mx*cos_lookup(pitch_rads) + mz*sin_lookup(pitch_rads);
 	arm_mult_f32(&mx,&cos_pitch,&tmp1,1);

@@ -500,11 +500,6 @@
               <FilePath>.\src\delay.c</FilePath>
             </File>
             <File>
-              <FileName>sine_table.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\sine_table.c</FilePath>
-            </File>
-            <File>
               <FileName>profile.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\profile.c</FilePath>

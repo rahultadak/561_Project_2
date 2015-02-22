@@ -1,4 +1,4 @@
-#define ONE_OVER_PI (0.31831f)
+#define F256_OVER_PI (81.4873f)
 
 extern const float sine[256];
 extern const float cosine[256];
