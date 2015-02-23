@@ -8,34 +8,34 @@ float sin_pitch,sin_roll,cos_pitch,cos_roll;
 
 void Compensated_Heading_DEF (float mx, float my, float mz, float roll_rads, float pitch_rads)
 {
-	float tmp1,tmp2,tmp3,tmp4;
+	//float tmp1,tmp2,tmp3,tmp4;
 	sin_pitch = sin_lookup(pitch_rads);
 	sin_roll = sin_lookup(roll_rads);
 	cos_pitch = cos_lookup(pitch_rads);
 	cos_roll = cos_lookup(roll_rads);
 	
-	//x_h = mx*cos_lookup(pitch_rads) + mz*sin_lookup(pitch_rads);
-	arm_mult_f32(&mx,&cos_pitch,&tmp1,1);
-	arm_mult_f32(&mz,&sin_pitch,&tmp2,1);
-	x_h = tmp1 + tmp2;
+	x_h = mx*cos_pitch + mz*sin_pitch;
+	//arm_mult_f32(&mx,&cos_pitch,&tmp1,1);
+	//arm_mult_f32(&mz,&sin_pitch,&tmp2,1);
+	//x_h = tmp1 + tmp2;
 	
-	/*
-	y_h = mx*sin_lookup(roll_rads)*sin_lookup(pitch_rads) + my*cos_lookup(roll_rads)
-	 - mz*sin_lookup(roll_rads)*cos_lookup(pitch_rads);
-	*/
+	
+	y_h = mx*sin_roll*sin_pitch + my*cos_roll \
+	 - mz*sin_roll*cos_pitch;
+	
 	
 	//mx*sin_lookup(roll_rads)*sin_lookup(pitch_rads)
-	arm_mult_f32(&mx,&sin_roll,&tmp1,1);
-	arm_mult_f32(&tmp1,&sin_pitch,&tmp2,1);
+	//arm_mult_f32(&mx,&sin_roll,&tmp1,1);
+	//arm_mult_f32(&tmp1,&sin_pitch,&tmp2,1);
 	
 	//my*cos_lookup(roll_rads)
-	arm_mult_f32(&my,&cos_roll,&tmp3,1);
+	//arm_mult_f32(&my,&cos_roll,&tmp3,1);
 	
 	//mz*sin_lookup(roll_rads)*cos_lookup(pitch_rads);
-	arm_mult_f32(&mz,&sin_roll,&tmp1,1);
-	arm_mult_f32(&tmp1,&cos_pitch,&tmp4,1);
+	//arm_mult_f32(&mz,&sin_roll,&tmp1,1);
+	//arm_mult_f32(&tmp1,&cos_pitch,&tmp4,1);
 	
-	y_h = tmp2 + tmp3 - tmp4;	
+	//y_h = tmp2 + tmp3 - tmp4;	
 
 	//atan2 gives output in range of (-180,180]
 	//negating parameters and adding 180 will map the output

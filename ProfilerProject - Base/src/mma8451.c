@@ -90,11 +90,11 @@ void convert_xyz_to_roll_pitch(void) {
 				az = acc_Z/COUNTS_PER_G;
 	
 	pitch_rads = asinf(ax);
-	arm_mult_f32(&pitch_rads,&d180_over_pi,&pitch,1);
-	//pitch = pitch_rads*D180_OVER_PI;
+	//arm_mult_f32(&pitch_rads,&d180_over_pi,&pitch,1);
+	pitch = pitch_rads*D180_OVER_PI;
 	roll_rads = atan2f(ay, az);
-	arm_mult_f32(&roll_rads,&d180_over_pi,&roll,1);
-	//roll = roll_rads*D180_OVER_PI;	
+	//arm_mult_f32(&roll_rads,&d180_over_pi,&roll,1);
+	roll = roll_rads*D180_OVER_PI;	
 }
 
 void convert_xyz_to_roll_pitch_DEF(void)

@@ -201,7 +201,6 @@ uint8_t i2c_wait(void)
 
 void i2c_reset(void)
 {
-	int i;
 	//Disable I2C Module 	
 	I2C0->C1 &= ~(I2C_C1_IICEN_MASK );
 	I2C_TRAN;
